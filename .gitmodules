@@ -1,6 +1,0 @@
-[submodule "python"]
-	path = python
-	url = git@github.com:weasdown/starsolver_python.git
-[submodule "flutter"]
-	path = flutter
-	url = git@github.com:weasdown/starsolver_flutter.git
