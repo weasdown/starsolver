@@ -72,7 +72,7 @@ class CellBoundarySet {
 
   /// Cell edges in the returned list are in the order `[start, top, end, bottom]`
   /// (to match against `Padding.fromLTRB()`)..
-  List<bool> get values => [start, top, end, bottom];
+  List<bool> get values => List.unmodifiable([start, top, end, bottom]);
 }
 
 /// The three possible statuses for a Cell.
