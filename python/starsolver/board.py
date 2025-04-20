@@ -8,7 +8,10 @@ import shape as s
 
 
 class Board:
-    dimension: int = 9  # Number of cells on a side of the Board
+    dimension: int = 9  # Number of cells on a side of the Board.
+
+    n: int = dimension  # Alias for dimension.
+    s: int = 2  # The number of stars in each row, column and shape once solved.
 
     def __init__(self, shapes: list[dict[str, list[c.Coordinate] | int]] = None):
         """A 9x9 board in which a puzzle takes place."""
