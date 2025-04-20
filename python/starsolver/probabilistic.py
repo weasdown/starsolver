@@ -21,6 +21,11 @@ class ProbabilisticCell(Cell):
         return f'ProbabilisticCell({self.coord}, {self.p_star})'
 
     @property
+    def data(self) -> tuple:
+        """Gets a tuple containing the cell's x coordinate, y coordinate and probability."""
+        return self.coord.x, self.coord.y, self.p_star
+
+    @property
     def probability(self) -> float:
         """Gets the probability that this is a star."""
         return self.p_star
