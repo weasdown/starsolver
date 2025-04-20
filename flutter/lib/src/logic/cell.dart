@@ -1,11 +1,12 @@
-import 'package:starsolver_flutter/src/presentation/cell_widget.dart';
+import 'package:flutter/material.dart';
 
+import '../presentation/cell_widget.dart';
 import 'board.dart';
 import 'shape.dart';
 
 /// An individual cell within a [Board].
 class Cell {
-  Cell({required this.coord})
+  Cell({required this.coord, this.colour})
       : _status = CellStatus.blank,
         boundaries = CellBoundarySet(
           start: false,
@@ -19,6 +20,11 @@ class Cell {
 
   /// Whether each edge of the [Cell] is the boundary of a [Shape].
   CellBoundarySet boundaries;
+
+  /// The background colour of the cell when display as a [CellWidget].
+  ///
+  /// The colour is used to determine which [Shape] a [Cell] is within.
+  Color? colour;
 
   /// The [Coordinate] of the [Cell] in the [Board].
   ///
