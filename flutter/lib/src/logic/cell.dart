@@ -5,18 +5,6 @@ import 'shape.dart';
 
 /// An individual cell within a [Board].
 class Cell {
-  /// The [Coordinate] of the [Cell] in the [Board].
-  ///
-  /// Note that, to align with computer vision common practices, the origin is
-  /// the **top left** [Cell] in the [Board].
-  final Coordinate coord;
-
-  /// A [CellStatus] value showing whether the [Cell] is blank, a dot or a star.
-  CellStatus status;
-
-  /// The [Shape] that this [Cell] is within.
-  late final Shape? shape;
-
   Cell({required this.coord})
       : _status = CellStatus.blank,
         boundaries = CellBoundarySet(
@@ -26,8 +14,8 @@ class Cell {
           bottom: false,
         );
 
-  /// Iterates the [Cell]'s [status] through the possible values of [CellStatus].
-  void nextStatus() => status = status.nextStatus;
+  /// Sets the cell's [status] to [CellStatus.blank].
+  blank() => _status = CellStatus.blank;
 
   /// Whether each edge of the [Cell] is the boundary of a [Shape].
   CellBoundarySet boundaries;
