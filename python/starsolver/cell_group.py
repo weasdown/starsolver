@@ -1,7 +1,6 @@
 # Classes for general groups of cells.
 
-from board import Board
-from cell import Cell, Coordinate
+from board import Board, Cell, Coordinate
 
 
 class CelLGroup:

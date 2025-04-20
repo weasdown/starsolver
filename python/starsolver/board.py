@@ -328,3 +328,20 @@ class ProbabilisticCell(Cell):
     def probability(self) -> float:
         """Gets the probability that this is a star."""
         return self.p_star
+
+# # TODO merge ProbabilisticBoard into Board
+# class ProbabilisticBoard(Board):
+#     def __init__(self):
+#         """A Board where each cell is a ProbabilisticCell that has an assigned probability of being a star."""
+#         super().__init__()
+#
+#         # FIXME add a ProbabilisticFilling class that gives each cell in a filling a p_star.
+#         starting_cell_probability: float = self.s / self.n
+#
+#         p_cells: list[ProbabilisticCell] = []
+#         for index, cell in enumerate(self.cells):
+#             probabilistic_cell: ProbabilisticCell = ProbabilisticCell(cell.coord,
+#                                                                       starting_cell_probability)
+#             p_cells.append(probabilistic_cell)
+#
+#         self.cells: list[ProbabilisticCell] = p_cells
