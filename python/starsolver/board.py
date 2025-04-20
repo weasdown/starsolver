@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-import starsolver.cell as c
-import starsolver.cell_group as cg
-import starsolver.shape as s
+import cell as c
+import cell_group as cg
+import shape as s
 
 
 class Board:
