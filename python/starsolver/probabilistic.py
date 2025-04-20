@@ -62,7 +62,7 @@ def _matplotlib_template():
     Z = np.sin(R)
 
     # Plot the surface.
-    surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm,
+    surf = ax.plot_surface(X, Y, Z, cmap=plt.colormaps['coolwarm'],
                            linewidth=0, antialiased=False)
 
     # Customize the z axis.
