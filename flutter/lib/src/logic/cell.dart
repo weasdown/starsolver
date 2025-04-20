@@ -93,10 +93,10 @@ enum CellStatus {
 
 /// A [Cell]'s coordinate in the [Board].
 class Coordinate {
+  Coordinate({required this.x, required this.y});
+
   final int x;
   final int y;
-
-  Coordinate({required this.x, required this.y});
 
   @override
   bool operator ==(Object other) {
