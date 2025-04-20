@@ -56,6 +56,10 @@ class Board:
     def cell_from_coord(self, coord: Coordinate) -> Cell:
         return [cell for cell in self.cells if (cell.coord == coord)][0]
 
+    def dot(self, coord: Coordinate) -> None:
+        """Adds a dot in a given coordinate."""
+        self[coord.y][coord.x].dot()
+
     @property
     def is_complete(self) -> bool:
         """Gets whether the Board has been completed and is valid."""
