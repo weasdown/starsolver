@@ -30,6 +30,10 @@ class Board:
         """A list of all the Shapes in the Board."""
         self.shapes: list[s.Shape] = self.build_shapes(shapes)
 
+    @classmethod
+    def probabilistic(cls):
+        raise NotImplementedError('Board.probabilistic() constructor is not yet implemented.')
+
     def __getitem__(self, index: int):
         return self.rows[index]
 
@@ -80,6 +84,10 @@ class Column:
         self.cells: list[c.Cell] = [c.Cell(c.Coordinate(self.index, vert_index))
                                     for vert_index in range(Board.dimension)]
 
+    @classmethod
+    def probabilistic(cls):
+        raise NotImplementedError('Column.probabilistic() constructor is not yet implemented.')
+
     def __getitem__(self, index: int) -> c.Cell:
         return self.cells[index]
 
@@ -93,6 +101,10 @@ class Row:
 
         self.cells: list[c.Cell] = [c.Cell(c.Coordinate(horiz_index, self.index)) for horiz_index in
                                     range(Board.dimension)]
+
+    @classmethod
+    def probabilistic(cls):
+        raise NotImplementedError('Row.probabilistic() constructor is not yet implemented.')
 
     def __getitem__(self, index: int) -> c.Cell:
         return self.cells[index]
