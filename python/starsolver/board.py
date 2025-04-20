@@ -132,6 +132,10 @@ class Board:
 
         plt.show()
 
+    def star(self, coord: Coordinate, dot_adjacents: bool = True) -> None:
+        """Adds a star in a given coordinate. Optionally dots adjacent cells."""
+        self[coord.y][coord.x].star(dot_adjacents, self)
+
 
 class Column:
     def __init__(self, index: int):
