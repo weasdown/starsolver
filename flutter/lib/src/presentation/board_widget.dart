@@ -27,17 +27,17 @@ class BoardWidget extends StatelessWidget {
             )),
       );
 
-  /// Amount of spacing between [CellWidget]s.
-  final double spacingWithin = 0;
-
-  /// Set all [cells] to blank.
+  /// Set all of the [board]'s [Board.cells] to blank.
   ///
-  /// Sets the [Cell.status] of all [cells] to [CellStatus.blank].
+  /// Sets the [Cell.status] of all cells in the [board] to [CellStatus.blank].
   void clearAllCells() {
     for (Cell cell in board.cells) {
       cell.blank();
     }
   }
+
+  /// Amount of spacing between [CellWidget]s.
+  final double spacingWithin = 0;
 
   @override
   Widget build(BuildContext context) {
