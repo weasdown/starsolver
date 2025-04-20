@@ -36,7 +36,7 @@ class _CellWidgetState extends State<CellWidget> {
   /// Sets the [widget.cell]'s [Cell.status] to [CellStatus.star].
   setStar() {
     setState(
-      () => widget.cell.status = CellStatus.star,
+      () => widget.cell.star(),
     );
 
     if (widget.board.isComplete) {
@@ -51,7 +51,7 @@ class _CellWidgetState extends State<CellWidget> {
     if (next == CellStatus.star) {
       setStar();
     } else {
-      setState(() => widget.cell.status = next);
+      setState(() => widget.cell.nextStatus());
     }
   }
 
