@@ -18,22 +18,21 @@ class LinearCellGroup(CelLGroup):
     def __getitem__(self, index: int) -> Cell:
         return self.cells[index]
 
-
-class Column(LinearCellGroup):
-    def __init__(self, index: int):
-        super().__init__(index, cells=[])
-        self.cells: list[Cell] = [Cell(Coordinate(self.index, vert_index))
-                                  for vert_index in range(b.Board.dimension)]
-
-    def __repr__(self):
-        return f'Column({self.index})'
-
-
-class Row(LinearCellGroup):
-    def __init__(self, index: int):
-        super().__init__(index, [])
-        self.cells: list[Cell] = [Cell(Coordinate(horiz_index, self.index)) for horiz_index in
-                                  range(Board.dimension)]
-
-    def __repr__(self):
-        return f'Row({self.index})'
+# class Column(LinearCellGroup):
+#     def __init__(self, index: int):
+#         super().__init__(index, cells=[])
+#         self.cells: list[Cell] = [Cell((self.index, vert_index))
+#                                   for vert_index in range(Board.dimension)]
+#
+#     def __repr__(self):
+#         return f'Column({self.index})'
+#
+#
+# class Row(LinearCellGroup):
+#     def __init__(self, index: int):
+#         super().__init__(index, [])
+#         self.cells: list[Cell] = [Cell((horiz_index, self.index)) for horiz_index in
+#                                   range(Board.dimension)]
+#
+#     def __repr__(self):
+#         return f'Row({self.index})'
