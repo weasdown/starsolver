@@ -103,8 +103,8 @@ class Board:
 
         # ## FIXME remove - testing only
         # # Star some cells
-        # for example_cell in [(8, 6), (3, 2), (5, 7)]:
-        #     self[example_cell[0]][example_cell[1]].star(True, self)
+        # for coord in [(8, 6), (3, 2), (5, 7)]:
+        #     self.star(Coordinate.from_tuple(coord))
 
         top = z
         bottom = np.zeros_like(top)
@@ -217,6 +217,10 @@ class Coordinate:
             return True
         else:
             return False
+
+    @classmethod
+    def from_tuple(cls, coords: tuple) -> Coordinate:
+        return Coordinate(coords[0], coords[1])
 
     def __repr__(self):
         return f'({self.x}, {self.y})'
