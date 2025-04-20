@@ -109,10 +109,9 @@ class Board:
 
         top = z
         bottom = np.zeros_like(top)
-        width = depth = 1
 
         # surf =
-        ax.bar3d(x.ravel(), y.ravel(), bottom.ravel(), width, depth,
+        ax.bar3d(x.ravel(), y.ravel(), bottom.ravel(), 1, 1,
                  np.array([cell.p_star for cell in self.cells]).ravel(),
                  color=[p_cell.colour for p_cell in self.cells],
                  shade=True,
