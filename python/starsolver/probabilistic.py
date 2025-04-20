@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib import cm
 from matplotlib.ticker import LinearLocator
 
 from board import Board
@@ -49,10 +48,47 @@ class ProbabilisticBoard(Board):
 
     def plot_probability_surface(self) -> None:
         """Plots a 3D surface showing the probability that each cell in the board is a star."""
-        for cell in self.cells:
-            print(cell)
+        _matplotlib_template()  # FIXME remove _matplotlib_template() call
 
-            # _matplotlib_template()
+        fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+
+        # Make data.
+        # x, y = np.arange(0, self.dimension, 1)
+        # x, y = np.meshgrid(x, y)
+
+        horizontal_axes_limits = range(1, self.dimension + 1)  # Horizontal limits are set by the board dimension.
+        x = np.meshgrid(horizontal_axes_limits, horizontal_axes_limits)
+        y = x
+
+        # FIXME fix ProbabilisticBoard.rows, columns attributes so __get_item__() works properly
+        z: np.ndarray = self[1][1].probability  # np.ndarray([])
+
+        pass
+
+        for cell in self.cells:
+            data: tuple = cell.data
+            np.append(x, data[0])
+            np.append(y, data[1])
+            np.append(z, data[2])
+
+        # TODO remove old code
+        # R = np.sqrt(X ** 2 + Y ** 2)
+        # Z = np.sin(R)
+
+        # Plot the surface.
+        surf = ax.plot_surface(x, y, z,
+                               # cmap=plt.colormaps['coolwarm'],
+                               linewidth=0, antialiased=False)
+
+        # Customize the z axis.
+        ax.set_zlim(0, 1)  # Set Z-axis limits to min and max for a probability.
+        # A StrMethodFormatter is used automatically
+        ax.zaxis.set_major_formatter('{x:.02f}')
+
+        # Add a color bar which maps values to colors.
+        fig.colorbar(surf, shrink=0.5, aspect=5)
+
+        plt.show()
 
 
 # FIXME remove _matplotlib_template() once useful parts copied into plot_probability_surface()
@@ -79,7 +115,7 @@ def _matplotlib_template():
     # Add a color bar which maps values to colors.
     fig.colorbar(surf, shrink=0.5, aspect=5)
 
-    plt.show()
+    # plt.show()
 
 
 if __name__ == '__main__':
