@@ -9,9 +9,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-# from .probabilistic import matplotlib_template
-
-
 class Board:
     dimension: int = 9  # Number of cells on a side of the Board.
 
