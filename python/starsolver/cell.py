@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from enum import Enum
 
-import starsolver.board as b
+import board as b
 
 
 @dataclass

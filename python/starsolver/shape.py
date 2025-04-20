@@ -1,6 +1,6 @@
 # Shape class
 
-import starsolver.cell as c
+import cell as c
 
 
 class Shape:

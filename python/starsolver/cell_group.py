@@ -1,7 +1,7 @@
 # Classes for general groups of cells.
 
-import starsolver.board as b
-import starsolver.cell as c
+import board as b
+import cell as c
 
 
 class CelLGroup:
