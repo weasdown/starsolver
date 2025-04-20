@@ -82,11 +82,15 @@ class Column:
         self.index: int = index
 
         self.cells: list[c.Cell] = [c.Cell(c.Coordinate(self.index, vert_index))
-                                    for vert_index in range(Board.dimension)]
+                                    for vert_index in range(Board.n)]
 
     @classmethod
-    def probabilistic(cls):
-        raise NotImplementedError('Column.probabilistic() constructor is not yet implemented.')
+    def probabilistic(cls, index: int):
+        column: Column = Column(index)
+        p_cells: list[ProbabilisticCell] = [ProbabilisticCell(c.Coordinate(index, vert_index)) for vert_index in
+                                            range(Board.n)]
+        column.cells = p_cells
+        return column
 
     def __getitem__(self, index: int) -> c.Cell:
         return self.cells[index]
@@ -100,11 +104,15 @@ class Row:
         self.index: int = index
 
         self.cells: list[c.Cell] = [c.Cell(c.Coordinate(horiz_index, self.index)) for horiz_index in
-                                    range(Board.dimension)]
+                                    range(Board.n)]
 
     @classmethod
-    def probabilistic(cls):
-        raise NotImplementedError('Row.probabilistic() constructor is not yet implemented.')
+    def probabilistic(cls, index: int):
+        row: Row = Row(index)
+        p_cells: list[ProbabilisticCell] = [ProbabilisticCell(c.Coordinate(horiz_index, index)) for horiz_index in
+                                            range(Board.n)]
+        row.cells = p_cells
+        return row
 
     def __getitem__(self, index: int) -> c.Cell:
         return self.cells[index]
