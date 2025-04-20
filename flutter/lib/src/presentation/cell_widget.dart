@@ -17,8 +17,17 @@ class CellWidget extends StatefulWidget {
     required this.onComplete,
   });
 
+  /// Sets the [cell]'s status to [CellStatus.blank].
+  void blank() => cell.blank();
+
   @override
   State<CellWidget> createState() => _CellWidgetState();
+
+  /// Sets the [cell]'s status to [CellStatus.dot].
+  void dot() => cell.dot();
+
+  /// Sets the [cell]'s status to [CellStatus.star].
+  void star() => cell.star();
 }
 
 class _CellWidgetState extends State<CellWidget> {
