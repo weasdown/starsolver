@@ -35,7 +35,7 @@ class BoardWidget extends StatelessWidget {
   /// Sets the [Cell.status] of all [cells] to [CellStatus.blank].
   void clearAllCells() {
     for (Cell cell in board.cells) {
-      cell.status = CellStatus.blank;
+      cell.blank();
     }
   }
 
