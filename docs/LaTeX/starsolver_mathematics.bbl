@@ -1,0 +1,83 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{stars-app}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=ac5e789d7ab0d975a7edf8289ea43dd2}{%
+           family={brennerd},
+           familyi={b\bibinitperiod}}}%
+      }
+      \strng{namehash}{ac5e789d7ab0d975a7edf8289ea43dd2}
+      \strng{fullhash}{ac5e789d7ab0d975a7edf8289ea43dd2}
+      \strng{fullhashraw}{ac5e789d7ab0d975a7edf8289ea43dd2}
+      \strng{bibnamehash}{ac5e789d7ab0d975a7edf8289ea43dd2}
+      \strng{authorbibnamehash}{ac5e789d7ab0d975a7edf8289ea43dd2}
+      \strng{authornamehash}{ac5e789d7ab0d975a7edf8289ea43dd2}
+      \strng{authorfullhash}{ac5e789d7ab0d975a7edf8289ea43dd2}
+      \strng{authorfullhashraw}{ac5e789d7ab0d975a7edf8289ea43dd2}
+      \field{sortinit}{b}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{(accessed: 19/4/2025)}
+      \field{title}{Star Battle: Logic Puzzles}
+      \verb{urlraw}
+      \verb https://play.google.com/store/apps/details?id=com.brennerd.grid_puzzle.star_battle
+      \endverb
+      \verb{url}
+      \verb https://play.google.com/store/apps/details?id=com.brennerd.grid_puzzle.star_battle
+      \endverb
+      \keyw{stars}
+    \endentry
+    \entry{krazydad}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=b5078221bd51107ff2cffcb8edba12cd}{%
+           family={Bugardner},
+           familyi={B\bibinitperiod},
+           given={Jim},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{b5078221bd51107ff2cffcb8edba12cd}
+      \strng{fullhash}{b5078221bd51107ff2cffcb8edba12cd}
+      \strng{fullhashraw}{b5078221bd51107ff2cffcb8edba12cd}
+      \strng{bibnamehash}{b5078221bd51107ff2cffcb8edba12cd}
+      \strng{authorbibnamehash}{b5078221bd51107ff2cffcb8edba12cd}
+      \strng{authornamehash}{b5078221bd51107ff2cffcb8edba12cd}
+      \strng{authorfullhash}{b5078221bd51107ff2cffcb8edba12cd}
+      \strng{authorfullhashraw}{b5078221bd51107ff2cffcb8edba12cd}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{(accessed: 19/4/2025)}
+      \field{title}{Two Not Touch Puzzles}
+      \verb{urlraw}
+      \verb https://krazydad.com/twonottouch/
+      \endverb
+      \verb{url}
+      \verb https://krazydad.com/twonottouch/
+      \endverb
+      \keyw{stars}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
