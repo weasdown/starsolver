@@ -2,5 +2,6 @@
 
 from .board import *
 from .cell import *
+from .probabilistic import *
 from .shape import *
 from .solver import *
