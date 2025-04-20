@@ -1,123 +1,51 @@
-import matplotlib.pyplot as plt
-import numpy as np
-from matplotlib.ticker import LinearLocator
-
-from board import Board
-from cell import Cell, Coordinate
-
-
-class ProbabilisticCell(Cell):
-    def __init__(self, coord: Coordinate, p_star: float) -> None:
-        """A Cell with an assigned probability of being a star."""
-        assert (p_star <= 1) and (p_star >= 0)
-
-        super().__init__(coord)
-
-        self.p_star: float = p_star
-        self.p_dot: float = 1 - p_star
-
-    def __repr__(self) -> str:
-        return f'ProbabilisticCell({self.coord}, {self.p_star})'
-
-    @property
-    def data(self) -> tuple:
-        """Gets a tuple containing the cell's x coordinate, y coordinate and probability."""
-        return self.coord.x, self.coord.y, self.p_star
-
-    @property
-    def probability(self) -> float:
-        """Gets the probability that this is a star."""
-        return self.p_star
-
-
-class ProbabilisticBoard(Board):
-    def __init__(self):
-        """A Board where each cell is a ProbabilisticCell that has an assigned probability of being a star."""
-        super().__init__()
-
-        # FIXME add a ProbabilisticFilling class that gives each cell in a filling a p_star.
-        starting_cell_probability: float = self.s / self.n
-
-        p_cells: list[ProbabilisticCell] = []
-        for index, cell in enumerate(self.cells):
-            probabilistic_cell: ProbabilisticCell = ProbabilisticCell(cell.coord,
-                                                                      starting_cell_probability)
-            p_cells.append(probabilistic_cell)
-
-        self.cells: list[ProbabilisticCell] = p_cells
-
-    def plot_probability_surface(self) -> None:
-        """Plots a 3D surface showing the probability that each cell in the board is a star."""
-        _matplotlib_template()  # FIXME remove _matplotlib_template() call
-
-        fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
-
-        # Make data.
-        # x, y = np.arange(0, self.dimension, 1)
-        # x, y = np.meshgrid(x, y)
-
-        horizontal_axes_limits = range(1, self.dimension + 1)  # Horizontal limits are set by the board dimension.
-        x = np.meshgrid(horizontal_axes_limits, horizontal_axes_limits)
-        y = x
-
-        # FIXME fix ProbabilisticBoard.rows, columns attributes so __get_item__() works properly
-        z: np.ndarray = self[1][1].probability  # np.ndarray([])
-
-        pass
-
-        for cell in self.cells:
-            data: tuple = cell.data
-            np.append(x, data[0])
-            np.append(y, data[1])
-            np.append(z, data[2])
-
-        # TODO remove old code
-        # R = np.sqrt(X ** 2 + Y ** 2)
-        # Z = np.sin(R)
-
-        # Plot the surface.
-        surf = ax.plot_surface(x, y, z,
-                               # cmap=plt.colormaps['coolwarm'],
-                               linewidth=0, antialiased=False)
-
-        # Customize the z axis.
-        ax.set_zlim(0, 1)  # Set Z-axis limits to min and max for a probability.
-        # A StrMethodFormatter is used automatically
-        ax.zaxis.set_major_formatter('{x:.02f}')
-
-        # Add a color bar which maps values to colors.
-        fig.colorbar(surf, shrink=0.5, aspect=5)
-
-        plt.show()
-
-
-# FIXME remove _matplotlib_template() once useful parts copied into plot_probability_surface()
-def _matplotlib_template():
-    fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
-
-    # Make data.
-    X = np.arange(-5, 5, 0.25)
-    Y = np.arange(-5, 5, 0.25)
-    X, Y = np.meshgrid(X, Y)
-    R = np.sqrt(X ** 2 + Y ** 2)
-    Z = np.sin(R)
-
-    # Plot the surface.
-    surf = ax.plot_surface(X, Y, Z, cmap=plt.colormaps['coolwarm'],
-                           linewidth=0, antialiased=False)
-
-    # Customize the z axis.
-    ax.set_zlim(-1.01, 1.01)
-    ax.zaxis.set_major_locator(LinearLocator(10))
-    # A StrMethodFormatter is used automatically
-    ax.zaxis.set_major_formatter('{x:.02f}')
-
-    # Add a color bar which maps values to colors.
-    fig.colorbar(surf, shrink=0.5, aspect=5)
-
-    # plt.show()
-
-
-if __name__ == '__main__':
-    p_board: ProbabilisticBoard = ProbabilisticBoard()
-    p_board.plot_probability_surface()
+# import matplotlib.pyplot as plt
+# import numpy as np
+# from matplotlib.ticker import LinearLocator
+# from mpl_toolkits.mplot3d import Axes3D
+#
+#
+# ## TODO remove ProbabilisticBoard
+# # class ProbabilisticBoard(Board):
+# #     def __init__(self):
+# #         """A Board where each cell is a ProbabilisticCell that has an assigned probability of being a star."""
+# #         super().__init__()
+# #
+# #         # FIXME add a ProbabilisticFilling class that gives each cell in a filling a p_star.
+# #         starting_cell_probability: float = self.s / self.n
+# #
+# #         p_cells: list[ProbabilisticCell] = []
+# #         for index, cell in enumerate(self.cells):
+# #             probabilistic_cell: ProbabilisticCell = ProbabilisticCell(cell.coord,
+# #                                                                       starting_cell_probability)
+# #             p_cells.append(probabilistic_cell)
+# #
+# #         self.cells: list[ProbabilisticCell] = p_cells
+#
+#
+# # FIXME remove _matplotlib_template() once useful parts copied into plot_probability_surface()
+# def matplotlib_template():
+#     fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+#     ax: Axes3D
+#
+#     # Make data.
+#     X = np.arange(-5, 5, 0.25)
+#     Y = np.arange(-5, 5, 0.25)
+#     X, Y = np.meshgrid(X, Y)
+#     R = np.sqrt(X ** 2 + Y ** 2)
+#     Z = np.sin(R)
+#
+#     # Plot the surface.
+#     surf = ax.plot_surface(X, Y, Z,
+#                            # cmap=plt.colormaps['coolwarm'],
+#                            linewidth=0, antialiased=False)
+#
+#     # Customize the z axis.
+#     ax.set_zlim(-1.01, 1.01)
+#     ax.zaxis.set_major_locator(LinearLocator(10))
+#     # A StrMethodFormatter is used automatically
+#     ax.zaxis.set_major_formatter('{x:.02f}')
+#
+#     # Add a color bar which maps values to colors.
+#     fig.colorbar(surf, shrink=0.5, aspect=5)
+#
+#     # plt.show()
