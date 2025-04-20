@@ -18,7 +18,7 @@ class Cell {
   late final Shape? shape;
 
   Cell({required this.coord})
-      : status = CellStatus.blank,
+      : _status = CellStatus.blank,
         boundaries = CellBoundarySet(
           start: false,
           top: false,
@@ -31,6 +31,30 @@ class Cell {
 
   /// Whether each edge of the [Cell] is the boundary of a [Shape].
   CellBoundarySet boundaries;
+
+  /// The [Coordinate] of the [Cell] in the [Board].
+  ///
+  /// Note that, to align with computer vision common practices, the origin is
+  /// the **top left** [Cell] in the [Board].
+  final Coordinate coord;
+
+  /// Sets the cell's [status] to [CellStatus.dot].
+  dot() => _status = CellStatus.dot;
+
+  /// Iterates the [Cell]'s [status] through the possible values of [CellStatus].
+  void nextStatus() => _status = status.nextStatus;
+
+  /// The [Shape] that this [Cell] is within.
+  late final Shape? shape;
+
+  /// Sets the cell's [status] to [CellStatus.star].
+  star() => _status = CellStatus.star;
+
+  /// A private, internal [CellStatus] value showing whether the [Cell] is blank, a dot or a star.
+  CellStatus _status;
+
+  /// Gets the cell's [CellStatus] value.
+  CellStatus get status => _status;
 }
 
 /// Whether each edge of the [Cell] is the boundary of a [Shape].
