@@ -1,0 +1,56 @@
+import 'package:flutter/material.dart';
+
+import '../logic/board.dart';
+import '../logic/cell.dart';
+import 'cell_widget.dart';
+
+/// A widget to display a [Board].
+class BoardWidget extends StatelessWidget {
+  final Board board;
+  final double spacingAround;
+
+  final void Function() onComplete;
+
+  const BoardWidget({
+    super.key,
+    required this.board,
+    required this.spacingAround,
+    required this.onComplete,
+  });
+
+  /// All the [CellWidget]s for this [BoardWidget].
+  List<CellWidget> get cellWidgets => List<CellWidget>.from(
+        board.cells.map((Cell cell) => CellWidget(
+              cell: cell,
+              board: board,
+              onComplete: onComplete,
+            )),
+      );
+
+  /// Set all of the [board]'s [Board.cells] to blank.
+  ///
+  /// Sets the [Cell.status] of all cells in the [board] to [CellStatus.blank].
+  void clearAllCells() {
+    for (Cell cell in board.cells) {
+      cell.blank();
+    }
+  }
+
+  /// Amount of spacing between [CellWidget]s.
+  final double spacingWithin = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Flexible(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: spacingAround),
+        child: GridView.count(
+          mainAxisSpacing: spacingWithin,
+          crossAxisSpacing: spacingWithin,
+          crossAxisCount: Board.dimension,
+          children: cellWidgets,
+        ),
+      ),
+    );
+  }
+}
