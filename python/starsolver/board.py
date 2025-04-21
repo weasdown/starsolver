@@ -7,6 +7,7 @@ from enum import Enum
 
 import matplotlib.pyplot as plt
 import numpy as np
+from mpl_toolkits.mplot3d.axes3d import Axes3D
 
 
 class Board:
@@ -91,6 +92,7 @@ class Board:
             raise AttributeError('plot_probability_surface() is not supported for a non-probabilistic Board.')
 
         fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+        ax: Axes3D
 
         # Make data.
         x = y = np.array(range(1, self.dimension + 1))  # Horizontal limits are set by the board dimension.
