@@ -74,7 +74,8 @@ We can also plot this (see [frequency_plot.py](frequency_plot.py)):
 
 _Easy #1 frequency plot_
 
-## Board checking
+## Advantages of binary coefficients
+### Board checking
 Another advantage of the binary values and frequency components we used is that it enables us to check a completed board's validity. 
 We know that each star causes its neighbours to be dotted, meaning the values for those cells are 0. This then limits 
 which frequency component coefficients are valid.
@@ -82,4 +83,113 @@ which frequency component coefficients are valid.
 For example, take the cell in position (2, 8) in the reference board 
 (3rd cell in the bottom row). This has an amplitude of 256 and a frequency of 4 Hz but its presence means the 2 Hz and 
 8 Hz columns cannot have components with amplitude 256 or 128. This limits those components to a maximum amplitude of 80 (64 + 16). 
-If we see an amplitude over 80 in the 2 Hz or 8 Hz components, we can therefore immediate tell that the board is invalid. 
+If we see an amplitude over 80 in the 2 Hz or 8 Hz components, we can therefore immediate tell that the board is invalid.
+
+### Board storage
+The binary coefficients also enable us to store the board's star positions with a very small amount of data, as we only 
+need 9 integer values (one for each row) stored in an ordered list. For example, the reference board's star positions 
+can be described with the list `[130, 40, 257, 80, 5, 160, 10, 320, 20]`. This avoids having to store the coordinates 
+for every star, which would need two integers per star, so 36 integers in total.
+
+We can also encode the shapes in a similar way. For example, the top left light blue 'L' shape in the reference board 
+would have coefficients [3, 1, 1, 0, 0, 0, 0, 0, 0]. We could shorten this even further by assuming that the first 
+coefficient refers to the first column. This allows us to remove the extra 0s and gives a coefficient list of `[3, 1, 1]`.
+
+These lists can then be stored as a JSON. For example, the JSON representation of the reference board would be:
+
+```
+{
+    "stars": [
+        130,
+        40,
+        257,
+        80,
+        5,
+        160,
+        10,
+        320,
+        20
+    ],
+    "shapes": [
+        [
+            3,
+            1,
+            1
+        ],
+        [
+            0,
+            0,
+            0,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3
+        ],
+        [
+            12,
+            30,
+            62,
+            60,
+            24,
+            16,
+            16
+        ],
+        [
+            0,
+            0,
+            0,
+            0,
+            4,
+            12,
+            12,
+            60,
+            480
+        ],
+        [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            28
+        ],
+        [
+            112,
+            224,
+            192,
+            448,
+            484,
+            256
+        ],
+        [
+            0,
+            0,
+            0,
+            0,
+            96,
+            224,
+            480
+        ],
+        [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            448
+        ],
+        [
+            384,
+            256,
+            256
+        ]
+    ]
+}
+```
