@@ -10,6 +10,7 @@ print(f'{coefficients = }')
 
 ax = plt.axes()
 plt.plot(frequency_components, coefficients)
+plt.title('Frequency plot for solved Easy #1 board')
 plt.xlabel('Frequency (Hz)')
 plt.ylabel('Coefficient')
 ax.set_xscale('log', base=2)
