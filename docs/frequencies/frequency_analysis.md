@@ -93,7 +93,7 @@ for every star, which would need two integers per star, so 36 integers in total.
 
 We can also encode the shapes in a similar way. For example, the top left light blue 'L' shape in the reference board 
 would have coefficients [3, 1, 1, 0, 0, 0, 0, 0, 0]. We could shorten this even further by assuming that the first 
-coefficient refers to the first column. This allows us to remove the extra 0s and gives a coefficient list of `[3, 1, 1]`.
+coefficient refers to the first column. This allows us to remove the trailing 0s and gives a coefficient list of `[3, 1, 1]`.
 
 These lists can then be stored as a JSON. For example, the JSON representation of the reference board would be:
 
