@@ -67,3 +67,13 @@ For example for the reference board,
 `= 130 sin(t) + 40 sin(2t) + 257 sin(4t) + 80 sin(8t) + 5 sin(16t) + 160 sin(32t) + 10 sin(64t) + 320 sin(128t) + 640 sin(256t)`
 
 where `t` is a value that all the frequency components can be scaled by to get higher frequencies (`t` is 1 by default).
+
+## Board checking
+Another advantage of the binary values and frequency components we used is that it enables us to check a completed board's validity. 
+We know that each star causes its neighbours to be dotted, meaning the values for those cells are 0. This then limits 
+which frequency component coefficients are valid.
+
+For example, take the cell in position (2, 8) in the reference board 
+(3rd cell in the bottom row). This has an amplitude of 256 and a frequency of 4 Hz but its presence means the 2 Hz and 
+8 Hz columns cannot have components with amplitude 256 or 128. This limits those components to a maximum amplitude of 80 (64 + 16). 
+If we see an amplitude over 80 in the 2 Hz or 8 Hz components, we can therefore immediate tell that the board is invalid. 
