@@ -68,6 +68,12 @@ For example for the reference board,
 
 where `t` is a value that all the frequency components can be scaled by to get higher frequencies (`t` is 1 by default).
 
+We can also plot this (see [frequency_plot.py](frequency_plot.py)):
+
+<img height="400" alt="Easy #1 frequency plot" src="Easy_1_frequency_plot.png" />
+
+_Easy #1 frequency plot_
+
 ## Board checking
 Another advantage of the binary values and frequency components we used is that it enables us to check a completed board's validity. 
 We know that each star causes its neighbours to be dotted, meaning the values for those cells are 0. This then limits 
