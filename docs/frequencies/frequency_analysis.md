@@ -1,4 +1,4 @@
-# Surface Fitting
+# Frequency Analysis
 
 This document examines how we can find the equation of a surface that fits a board.
 
