@@ -69,6 +69,10 @@ class Board:
         starred_cells: list[c.Cell] = [cell for cell in self.cells if cell.status == c.CellStatus.star]
         return len(starred_cells)
 
+    def to_json(self) -> str:
+        """Returns a JSON representation of this board generated using [frequency encoding](docs/frequencies/frequency_analysis.md)."""
+        raise NotImplementedError('Board.to_json() is not yet implemented.')
+
 
 class Column:
     def __init__(self, index: int):
